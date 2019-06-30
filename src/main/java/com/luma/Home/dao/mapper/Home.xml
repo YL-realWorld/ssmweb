@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luma.Home.dao.HomeDao">
+
+    <select id="getUserByNameAndPwd" resultType="com.luma.Common.pojos.Users">
+		SELECT * FROM h_user WHERE umap=#{uname} AND upass=#{upass}
+	</select>
+
+</mapper>
