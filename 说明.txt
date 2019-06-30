@@ -8,3 +8,4 @@
 7.前端使用win10ui，基于layui和jquery2.2.4
 8.前后台通信暂定使用json
 9.登录使用前台md5+后台md5双验证，所以数据库中的用户名的映射umap和upass需要做双md5加密
+10.后续即将使用vue.js
