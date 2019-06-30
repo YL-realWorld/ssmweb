@@ -10,8 +10,5 @@
         <module name="webssm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="web-ssm" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
