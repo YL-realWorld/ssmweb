@@ -3,6 +3,8 @@ package com.luma.Home.controller;
 import com.luma.Common.pojos.Users;
 import com.luma.Common.utils.EDcrypt;
 import com.luma.Home.service.HomeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,9 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("home/")
 public class HomeController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
+
     @Autowired
     private HomeService homeService;
 
@@ -38,7 +43,7 @@ public class HomeController {
     @ResponseBody
     public HashMap<String, Object> login(String uname, String upass) {
         //测试xssfilter是否起作用
-        //System.out.println(uname+":"+upass);
+        LOGGER.info(">>>>>>>>>user login in.<<<<<<<<<");
         String url = "login";
         String code = "400";
         String msg = "bad";
