@@ -1,6 +1,7 @@
 package com.luma.Home.controller;
 
 import com.luma.Common.pojos.Users;
+import com.luma.Common.pojos.vo.UserLogin;
 import com.luma.Common.utils.EDcrypt;
 import com.luma.Home.service.HomeService;
 import org.slf4j.Logger;
@@ -27,7 +28,6 @@ public class HomeController {
     private HttpSession httpSession;
 
     /**
-     *
      * @param modelMap
      * @return String ==> html page
      */
@@ -51,16 +51,16 @@ public class HomeController {
         upass = EDcrypt.md5(upass);
         Users user = homeService.getUserByNameAndPwd(uname, upass);
         HashMap<String, Object> response = new HashMap<>();
-        if(user!=null){
-            httpSession.setAttribute("login", "admin");
+        if (user != null) {
+            httpSession.setAttribute(UserLogin.PathType.LOGIN.getValue(), UserLogin.Role.ADMIN.getValue());
             //modelMap.addAttribute("msg","hello, admin");
             url = "/home/user.php";
             code = "200";
             msg = "good";
         }
-        response.put("url",url);
-        response.put("code",code);
-        response.put("msg",msg);
+        response.put("url", url);
+        response.put("code", code);
+        response.put("msg", msg);
 
         return response;
     }
@@ -70,7 +70,7 @@ public class HomeController {
     public String user(ModelMap modelMap) {
         //modelMap.addAttribute("msg","hello");
         String url = "login";
-        if(httpSession.getAttribute("login").equals("admin")){
+        if (httpSession.getAttribute(UserLogin.PathType.LOGIN.getValue()).equals("admin")) {
             //modelMap.addAttribute("msg","hello, admin");
             url = "demo";
         }
@@ -80,14 +80,13 @@ public class HomeController {
 
 
     /**
-     *
      * @param modelMap
      * @return String ==> html page
      */
     @RequestMapping("error.php")
     //@ResponseBody
     public String error(ModelMap modelMap) {
-        modelMap.addAttribute("msg","hello");
+        modelMap.addAttribute("msg", "hello");
 
         return "404";
     }
