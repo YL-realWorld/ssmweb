@@ -14,6 +14,16 @@
     <!-- 自动扫描该包，使SpringMVC认为包下用了@Service注解的类是服务逻辑器 -->
     <context:component-scan base-package="com.luma.*.service" />
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <!-- 不进行拦截 -->
+            <mvc:exclude-mapping path="/login.html"/>
+
+            <bean class="com.luma.Common.config.MyIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 返回数据转json -->
     <mvc:annotation-driven />
 
